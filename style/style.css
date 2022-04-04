@@ -1,3 +1,52 @@
 h1 {
   color: rgb(45, 56, 52);
 }
+
+.border {
+  border: black solid 1px;
+}
+#main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calc-container {
+  display: flex;
+  flex-direction: column;
+}
+#screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 480px;
+  height: 150px;
+  padding-right: 20px;
+  font-size: 40px;
+}
+#button-container {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  width: 490px;
+  height: 500px;
+  gap: 5px;
+  padding: 5px;
+}
+
+.btn-dbl {
+  grid-row-start: 5;
+  grid-column-end: span 2;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border-radius: 3px;
+}
+
+.btn-num {
+  background-color: rgb(255, 200, 98);
+}
