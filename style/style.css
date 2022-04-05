@@ -19,6 +19,7 @@ h1 {
 #calc-container {
   display: flex;
   flex-direction: column;
+  border: 10px rgb(47, 47, 47) solid;
 }
 #screen-container {
   display: flex;
@@ -30,7 +31,15 @@ h1 {
   padding-right: 20px;
   /* font-size: 60px; */
   background-color: aliceblue;
-  border: 10px rgb(47, 47, 47) solid;
+  border-bottom: rgb(47, 47, 47) solid 10px;
+}
+#main-display {
+  font-size: 50px;
+  user-select: all;
+}
+#upper-display {
+  font-size: 30px;
+  user-select: all;
 }
 #button-container {
   display: grid;
@@ -41,14 +50,7 @@ h1 {
   gap: 5px;
   padding: 5px;
   background-color: rgb(47, 47, 47);
-  border-bottom: 15px solid rgb(47, 47, 47);
-}
-
-#main-display {
-  font-size: 50px;
-}
-#upper-display {
-  font-size: 30px;
+  /* border-bottom: 15px solid rgb(47, 47, 47); */
 }
 
 .btn-dbl {
@@ -63,8 +65,14 @@ h1 {
   font-size: 30px;
   border-radius: 3px;
   background-color: rgb(161, 250, 220);
+  user-select: none;
+  cursor: pointer;
 }
 
 .btn-num {
   background-color: rgb(255, 200, 98);
+}
+
+.btn-mouseover {
+  border: rgb(146, 146, 146) 3px solid;
 }
