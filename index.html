@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator Mk.1</title>
     <script defer src="./script/script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto Sans"
+    />
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
     <h1>Calculator</h1>
     <div id="main-container" class="border">
       <div id="calc-container" class="border">
-        <div id="screen-container" class="border"><span>1234567890</span></div>
+        <div id="screen-container" class="border">
+          <span id="main-display">651600</span
+          ><span id="upper-display">325800 x 2 =</span>
+        </div>
         <div id="button-container" class="border">
           <div data-btn="clear" class="btn border"><span>AC</span></div>
           <div data-btn="sign-change" class="btn border"><span>+/-</span></div>
@@ -21,7 +28,7 @@
           <div data-btn="7" class="btn border btn-num"><span>7</span></div>
           <div data-btn="8" class="btn border btn-num"><span>8</span></div>
           <div data-btn="9" class="btn border btn-num"><span>9</span></div>
-          <div data-btn="multiply" class="btn border"><span>*</span></div>
+          <div data-btn="multiply" class="btn border"><span>x</span></div>
           <div data-btn="4" class="btn border btn-num"><span>4</span></div>
           <div data-btn="5" class="btn border btn-num"><span>5</span></div>
           <div data-btn="6" class="btn border btn-num"><span>6</span></div>
