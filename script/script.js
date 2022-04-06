@@ -24,6 +24,14 @@ const init = function () {
 init();
 
 const btnNumClick = function (num) {
+  if (currentNumString.length >= 120) {
+    currentNumString = "Oh stop it!  You're just trying to break me :-<";
+    setTimeout(() => {
+      init();
+      updateScreen();
+      return;
+    }, 3000);
+  }
   if (evaluated === true) {
     console.log('this should clear the screen');
     init();
@@ -57,10 +65,12 @@ const btnOpClick = function (op) {
 };
 const updateScreen = function () {
   if (currentNumString.length < 15) mainDisplay.style.fontSize = '50px';
-  if (currentNumString.length >= 15 && currentNumString.length < 22)
+  if (currentNumString.length >= 15 && currentNumString.length < 25)
     mainDisplay.style.fontSize = '30px';
-  if (currentNumString.length > 21 && currentNumString.length < 32)
+  if (currentNumString.length >= 25 && currentNumString.length < 40)
     mainDisplay.style.fontSize = '20px';
+  if (upperDisplayText.length < 25) upperDisplay.style.fontSize = '30px';
+  if (upperDisplayText.length >= 25) upperDisplay.style.fontSize = '20px';
 
   mainDisplay.textContent = currentNumString;
   upperDisplay.textContent = upperDisplayText;

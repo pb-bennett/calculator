@@ -38,12 +38,16 @@ h1 {
   font-size: 50px;
   user-select: all;
   border: 1px black solid;
+  width: 460px;
+  /* overflow: hidden; */
+  word-wrap: break-word;
+  text-align: end;
 }
 #main-display-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  /* width: 460px; */
   height: 80px;
   border: 1px red solid;
 }
@@ -51,6 +55,9 @@ h1 {
 #upper-display {
   font-size: 30px;
   user-select: all;
+  word-wrap: break-word;
+  text-align: end;
+  width: 460px;
 }
 #button-container {
   display: grid;
