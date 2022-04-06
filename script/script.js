@@ -6,18 +6,29 @@ const btnNumberAll = document.querySelectorAll('btn-num');
 const btnAll = document.querySelectorAll('.btn');
 
 let currentNumString;
+let previousNumString;
+// let current2Num;
+let currentOperator;
+let evaluated = false;
 let firstNum;
 let secondNum;
-let currentOperator;
+let upperDisplayText = '';
 
 const init = function () {
   currentNumString = '0';
-  firstNum = secondNum = currentOperator = null;
+  previousNumString = currentOperator = '';
+  evaluated = false;
+  upperDisplayText = '';
   console.log('init');
 };
 init();
 
 const btnNumClick = function (num) {
+  if (evaluated === true) {
+    console.log('this should clear the screen');
+    init();
+    updateScreen();
+  }
   console.log(num);
   if (currentNumString === '0') {
     currentNumString = num;
@@ -29,29 +40,37 @@ const btnNumClick = function (num) {
   test();
 };
 
-const updateScreen = function () {
-  if (currentNumString.length < 12) mainDisplay.style.fontSize = '50px';
-  if (currentNumString.length > 12 && currentNumString.length < 22)
-    mainDisplay.style.fontSize = '30px';
-  mainDisplay.textContent = currentNumString;
+const btnOpClick = function (op) {
+  if (evaluated) {
+    evaluate();
+    evaluated = false;
+  }
+  console.log(op);
+  previousNumString = currentNumString;
+  currentNumString = '';
+  currentOperator = op;
+  upperDisplayText = `${previousNumString} ${currentOperator}`;
+
+  updateScreen();
+  console.log('btnOpClick');
   test();
 };
+const updateScreen = function () {
+  if (currentNumString.length < 15) mainDisplay.style.fontSize = '50px';
+  if (currentNumString.length >= 15 && currentNumString.length < 22)
+    mainDisplay.style.fontSize = '30px';
+  if (currentNumString.length > 21 && currentNumString.length < 32)
+    mainDisplay.style.fontSize = '20px';
 
-const btnOpClick = function (op) {
-  console.log(op);
-  if (currentOperator === null) {
-    firstNum = currentNumString;
-    currentOperator = op;
-  } else {
-    secondNum = currentNumString;
-    currentOperator = op;
-    evaluate(op);
-  }
-  console.log('btnOpClick');
+  mainDisplay.textContent = currentNumString;
+  upperDisplay.textContent = upperDisplayText;
+  console.log('updateScreen');
   test();
 };
 
 const evaluate = function (operator) {
+  firstNum = Number(previousNumString);
+  secondNum = Number(currentNumString);
   if (operator === '/') {
     currentNumString = firstNum / secondNum;
   }
@@ -64,10 +83,11 @@ const evaluate = function (operator) {
   if (operator === '-') {
     currentNumString = firstNum - secondNum;
   }
-  currentOperator = null;
-  currentNumString = Number(
-    Number(currentNumString).toFixed(9).toString()
-  ).toString();
+  // currentOperator = '';
+  currentNumString = currentNumString.toString();
+  previousNumString = previousNumString.toString();
+  upperDisplayText = `${firstNum} ${currentOperator} ${secondNum} =   `;
+  evaluated = true;
   updateScreen();
   console.log('evaluate');
   test();
@@ -91,9 +111,11 @@ const evaluate = function (operator) {
 const test = function () {
   console.log(
     'currentNumString:' + currentNumString,
-    'firstNum:' + firstNum,
-    'secondNum:' + secondNum,
-    'currentOperator:' + currentOperator
+    'previousNumString:' + previousNumString,
+    'evaluated:' + evaluated,
+    'currentOperator:' + currentOperator,
+    'firstNum:' + firstNum + 'secondNum:' + secondNum,
+    'upperDisplayText:' + upperDisplayText
   );
 };
 
@@ -117,6 +139,11 @@ btnAll.forEach(el => {
       init();
       updateScreen();
     }
+    if (e.target.closest('.btn').classList.contains('btn-evaluate')) {
+      console.log('evaluating');
+      evaluate(currentOperator);
+      updateScreen();
+    }
   });
   el.addEventListener('mouseover', function (e) {
     btnAll.forEach(el => el.classList.remove('btn-mouseover'));
@@ -128,3 +155,7 @@ btnAll.forEach(el => {
 });
 test();
 updateScreen();
+
+// currentNumString = Number(
+//   Number(currentNumString).toFixed(9).toString()
+// ).toString();

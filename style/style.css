@@ -32,11 +32,22 @@ h1 {
   /* font-size: 60px; */
   background-color: aliceblue;
   border-bottom: rgb(47, 47, 47) solid 10px;
+  /* border-radius: 10px; */
 }
 #main-display {
   font-size: 50px;
   user-select: all;
+  border: 1px black solid;
 }
+#main-display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 80px;
+  border: 1px red solid;
+}
+
 #upper-display {
   font-size: 30px;
   user-select: all;

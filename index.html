@@ -17,8 +17,10 @@
     <div id="main-container" class="border">
       <div id="calc-container" class="border">
         <div id="screen-container" class="border">
-          <span id="main-display">651600</span
-          ><span id="upper-display">325800 x 2 =</span>
+          <div id="main-display-container">
+            <span id="main-display">651600</span>
+          </div>
+          <span id="upper-display">325800 x 2 =</span>
         </div>
         <div id="button-container" class="border">
           <div data-btn="clear" class="btn border btn-clear">
@@ -43,7 +45,9 @@
             <span>0</span>
           </div>
           <div data-btn="point" class="btn border"><span>.</span></div>
-          <div data-btn="evaluate" class="btn border"><span>=</span></div>
+          <div data-btn="evaluate" class="btn border btn-evaluate">
+            <span>=</span>
+          </div>
         </div>
       </div>
     </div>
