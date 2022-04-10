@@ -84,7 +84,7 @@ const evaluate = function (operator) {
   if (operator === '/') {
     if (secondNum === 0) {
       currentNumString = "Please don't try it!  You'll break the world! ";
-      upperDisplayText = 'STOP!';
+      upperDisplayText = '😱';
       updateScreen();
       setTimeout(() => {
         init();
