@@ -67,8 +67,7 @@ const updateScreen = function () {
   if (currentNumString.length < 15) mainDisplay.style.fontSize = '50px';
   if (currentNumString.length >= 15 && currentNumString.length < 25)
     mainDisplay.style.fontSize = '30px';
-  if (currentNumString.length >= 25 && currentNumString.length < 40)
-    mainDisplay.style.fontSize = '20px';
+  if (currentNumString.length >= 25) mainDisplay.style.fontSize = '20px';
   if (upperDisplayText.length < 25) upperDisplay.style.fontSize = '30px';
   if (upperDisplayText.length >= 25) upperDisplay.style.fontSize = '20px';
 
@@ -79,9 +78,21 @@ const updateScreen = function () {
 };
 
 const evaluate = function (operator) {
+  if (previousNumString === '' || evaluated === true) return;
   firstNum = Number(previousNumString);
   secondNum = Number(currentNumString);
   if (operator === '/') {
+    if (secondNum === 0) {
+      currentNumString = "Please don't try it!  You'll break the world! ";
+      upperDisplayText = 'STOP!';
+      updateScreen();
+      setTimeout(() => {
+        init();
+        updateScreen();
+        return;
+      }, 3000);
+      return;
+    }
     currentNumString = firstNum / secondNum;
   }
   if (operator === 'x') {
@@ -103,6 +114,14 @@ const evaluate = function (operator) {
   test();
 };
 
+const backspace = function () {
+  if (evaluated === true || currentNumString === '0') return;
+  currentNumString = currentNumString.slice(0, -1);
+  console.log('backspace');
+  test();
+  updateScreen();
+};
+
 // const divide = function (firstNum, secondNum) {
 //   return firstNum / secondNum;
 // };
@@ -120,7 +139,7 @@ const evaluate = function (operator) {
 
 const test = function () {
   console.log(
-    'currentNumString:' + currentNumString,
+    'currentNumString:' + currentNumString + currentNumString.length,
     'previousNumString:' + previousNumString,
     'evaluated:' + evaluated,
     'currentOperator:' + currentOperator,
@@ -152,6 +171,17 @@ btnAll.forEach(el => {
     if (e.target.closest('.btn').classList.contains('btn-evaluate')) {
       console.log('evaluating');
       evaluate(currentOperator);
+      updateScreen();
+    }
+    if (e.target.closest('.btn').classList.contains('btn-sign-change')) {
+      console.log('Sign-change');
+      currentNumString = (currentNumString * -1).toString();
+      updateScreen();
+    }
+    if (e.target.closest('.btn').classList.contains('btn-backspace')) {
+      console.log('backspace');
+      backspace();
+
       updateScreen();
     }
   });

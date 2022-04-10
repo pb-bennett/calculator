@@ -58,6 +58,7 @@ h1 {
   word-wrap: break-word;
   text-align: end;
   width: 460px;
+  border: blue 1px solid;
 }
 #button-container {
   display: grid;
@@ -69,6 +70,10 @@ h1 {
   padding: 5px;
   background-color: rgb(47, 47, 47);
   /* border-bottom: 15px solid rgb(47, 47, 47); */
+}
+
+#backspace-img {
+  width: 60px;
 }
 
 .btn-dbl {
@@ -87,6 +92,9 @@ h1 {
   cursor: pointer;
 }
 
+.btn-reset {
+  background-color: rgb(221, 221, 221);
+}
 .btn-num {
   background-color: rgb(255, 200, 98);
 }
