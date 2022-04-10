@@ -122,6 +122,23 @@ const backspace = function () {
   updateScreen();
 };
 
+const point = function () {
+  if (evaluated === true) {
+    console.log('this should clear the screen');
+    init();
+    updateScreen();
+  }
+  if (currentNumString.includes('.')) return;
+  if (currentNumString === '0' || currentNumString === '')
+    currentNumString = '0.';
+  else {
+    currentNumString = currentNumString.concat('.');
+  }
+  console.log('point function');
+  test();
+  updateScreen();
+};
+
 // const divide = function (firstNum, secondNum) {
 //   return firstNum / secondNum;
 // };
@@ -181,7 +198,11 @@ btnAll.forEach(el => {
     if (e.target.closest('.btn').classList.contains('btn-backspace')) {
       console.log('backspace');
       backspace();
-
+      updateScreen();
+    }
+    if (e.target.closest('.btn').classList.contains('btn-point')) {
+      console.log('point');
+      point();
       updateScreen();
     }
   });
