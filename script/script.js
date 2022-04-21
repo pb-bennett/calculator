@@ -59,6 +59,10 @@ const btnOpClick = function (op) {
   currentOperator = op;
   upperDisplayText = `${previousNumString} ${currentOperator}`;
 
+  if (!previousNumString && !currentNumString) {
+    evaluate();
+    updateScreen();
+  }
   updateScreen();
   console.log('btnOpClick');
   test();
@@ -156,7 +160,7 @@ const point = function () {
 
 const test = function () {
   console.log(
-    'currentNumString:' + currentNumString + currentNumString.length,
+    'currentNumString:' + currentNumString,
     'previousNumString:' + previousNumString,
     'evaluated:' + evaluated,
     'currentOperator:' + currentOperator,
